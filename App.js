@@ -5,45 +5,53 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { Provider } from 'react-redux';
+
 import StatusBar from './components/StatusBar';
 import DeckList from './components/DeckList';
 import Deck from './components/Deck';
 import Quiz from './components/Quiz';
 import Card from './components/Card';
 import NewDeck from './components/NewDeck';
+import appReduxStore from './store';
+
+import API from './storage';
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  API.setInitialData();
+
   return (
-    <NavigationContainer styles={styles.container}>
-      <StatusBar />
+    <Provider store={appReduxStore}>
+      <NavigationContainer styles={styles.container}>
+        <StatusBar />
 
-      <Stack.Navigator initialRouteName='DeckList'>
-        <Stack.Screen
-          name='DeckList'
-          component={DeckList}
-          options={{ title: 'Deck List Overview' }}
-        />
+        <Stack.Navigator initialRouteName='DeckList'>
+          <Stack.Screen
+            name='DeckList'
+            component={DeckList}
+            options={{ title: 'Decks' }}
+          />
 
-        <Stack.Screen name='NewDeck'>
-          {(props) => <NewDeck {...props} extraData={{}} />}
-        </Stack.Screen>
+          <Stack.Screen name='NewDeck'>
+            {(props) => <NewDeck {...props} extraData={{}} />}
+          </Stack.Screen>
 
-        <Stack.Screen name='Deck'>
-          {(props) => <Deck {...props} extraData={{}} />}
-        </Stack.Screen>
+          <Stack.Screen name='Deck'>
+            {(props) => <Deck {...props} extraData={{}} />}
+          </Stack.Screen>
 
-        <Stack.Screen name='Quiz'>
-          {(props) => <Quiz {...props} extraData={{}} />}
-        </Stack.Screen>
+          <Stack.Screen name='Quiz'>
+            {(props) => <Quiz {...props} extraData={{}} />}
+          </Stack.Screen>
 
-        <Stack.Screen name='NewCard'>
-          {(props) => <Card {...props} extraData={{}} />}
-        </Stack.Screen>
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name='NewCard'>
+            {(props) => <Card {...props} extraData={{}} />}
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
