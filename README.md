@@ -18,3 +18,7 @@ npm start
 ## Running on Device
 
 [Running on Device](https://reactnative.dev/docs/running-on-device)
+
+## Expo 
+
+[Expo Docs](https://expo.io/learn)
