@@ -18,7 +18,7 @@ const addCard = (card) => {
 
 export const addCardAsync = (card) => {
   return (dispatch, getState) => {
-    return API.addCard(deck).then((updatedCard) => {
+    return API.addCard(card).then((updatedCard) => {
       dispatch(addCard(updatedCard));
     });
   };

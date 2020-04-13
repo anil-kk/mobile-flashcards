@@ -8,9 +8,12 @@ import {
 
 const DeckListItem = ({ item, navigation }) => {
   return (
-    <TouchableHighlight onPress={() => navigation.navigate('Deck')}>
+    <TouchableHighlight onPress={() => navigation.navigate('Deck',{
+        deck: item
+    })}>
       <View style={styles.deckListItem}>
         <Text style={styles.itemFont}>{item.name}</Text>
+        <Text style={styles.itemFont}>{item.cards.length} Cards</Text>
       </View>
     </TouchableHighlight>
   );
@@ -20,7 +23,7 @@ const styles = StyleSheet.create({
   deckListItem: {
     flex: 1,
     fontSize: 20,
-    height: 50,
+    height: 80,
     paddingHorizontal: 20,
     width: '100%',
     marginVertical: 10,

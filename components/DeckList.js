@@ -8,11 +8,12 @@ import DeckListItem from './DeckListItem';
 const DeckList = (props) => {
   return (
     <View style={styles.container}>
-      <Text>DeckList, modal to add new deck</Text>
       <Button
-        title='Test'
+        title='Add new Deck'
         onPress={() => {
-          props.dispatch(addDeckAsync({ name: 'Combi', cards: [] }));
+          //props.dispatch(addDeckAsync({ name: 'Combi', cards: [] }));
+
+          props.navigation.navigate('NewDeck');
         }}
       />
 

@@ -19,10 +19,11 @@ const setInitialData = () => {
   const initialCardState = {
     [cardId]: {
       cardId,
+      deckId,
       name: 'Initial Card',
       question: 'What is react',
       answer: 'React is java',
-      isTrue: false,
+      isCorrectAnswer: false,
     },
   };
   
@@ -66,14 +67,23 @@ const addDeck = async (deck) => {
   return newDesk;
 };
 
+
 const addCard = async (card) => {
   const id = uuidv4();
   const newCard = { ...card, id: id };
 
   try {
+    const rawDecksData = await AsyncStorage.getItem('decks');
+    const currentDecks = JSON.parse(rawDecksData);
+    const filtered = currentDecks.filter((deck) => deck.id !== newCard.deckId);
+    const deck = currentDecks.filter((deck) => deck.id === newCard.deckId)[0];
+    const updatedDesks= [...filtered, { ...deck, cards: [...deck.cards, newCard.id] }];
+
+    await AsyncStorage.setItem('decks', JSON.stringify(updatedDesks));
+
+
     const rawData = await AsyncStorage.getItem('cards');
     const currentCards = JSON.parse(rawData);
-
     const updatedCards = { ...currentCards, newCard };
 
     await AsyncStorage.setItem('cards', JSON.stringify(updatedCards));
