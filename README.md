@@ -36,6 +36,7 @@ npm start
 ## React Navigation
 [React Navigation Docs](https://reactnavigation.org/docs/getting-started)
 
+[Nesting navigation](https://reactnavigation.org/docs/nesting-navigators)
 
 ## React Native Express
 
