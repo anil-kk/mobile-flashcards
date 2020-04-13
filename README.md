@@ -28,6 +28,8 @@ npm start
 
 [Icons](https://docs.expo.io/versions/v37.0.0/guides/icons/)
 
+[Vector Icons](https://expo.github.io/vector-icons/)
+
 [Fonts](https://docs.expo.io/versions/v37.0.0/guides/using-custom-fonts/)
 
 
