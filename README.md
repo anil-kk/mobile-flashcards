@@ -22,3 +22,35 @@ npm start
 ## Expo 
 
 [Expo Docs](https://expo.io/learn)
+
+## Expo CLI
+[Expo CLI - Managed Workflow](https://docs.expo.io/versions/v37.0.0/workflow/expo-cli/)
+
+[Icons](https://docs.expo.io/versions/v37.0.0/guides/icons/)
+
+[Fonts](https://docs.expo.io/versions/v37.0.0/guides/using-custom-fonts/)
+
+
+## React Navigation
+[React Navigation Docs](https://reactnavigation.org/docs/getting-started)
+
+
+## React Native Express
+
+[Examples](http://www.reactnativeexpress.com/)
+
+## Redux Integration
+
+[Redux Integration](https://reactnavigation.org/docs/redux-integration)
+
+## React Navigation Hooks
+[React Navigation Hooks](https://reactnavigation.org/docs/use-navigation)
+
+## Statusbar
+
+[Config Statusbar](https://docs.expo.io/versions/v37.0.0/guides/configuring-statusbar/)
+
+## Notifications
+
+[Local Notifications](https://docs.expo.io/versions/latest/sdk/notifications/#notificationspresentlocalnotificationasynclocalnotification)
+
