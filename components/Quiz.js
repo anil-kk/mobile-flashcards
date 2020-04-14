@@ -1,10 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const Quiz = () => {
+const Quiz = (props) => {
+
+    const { route, navigation, dispatch } = props;
+    const { deck } = route.params;
     return (
         <View>
-            <Text>Quiz</Text>
+            <Text>{JSON.stringify(deck)}</Text>
         </View>
     )
 }

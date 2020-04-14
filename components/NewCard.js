@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { addCardAsync } from '../actions';
 
-const Card = (props) => {
+const NewCard = (props) => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
@@ -53,7 +53,7 @@ const Card = (props) => {
   );
 };
 
-export default connect()(Card);
+export default connect()(NewCard);
 
 const styles = StyleSheet.create({
   container: {

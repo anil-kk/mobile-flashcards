@@ -11,7 +11,7 @@ import StatusBar from './components/StatusBar';
 import DeckList from './components/DeckList';
 import Deck from './components/Deck';
 import Quiz from './components/Quiz';
-import Card from './components/Card';
+import NewCard from './components/NewCard';
 import NewDeck from './components/NewDeck';
 import appReduxStore from './store';
 
@@ -47,7 +47,7 @@ export default function App() {
           </Stack.Screen>
 
           <Stack.Screen name='NewCard'>
-            {(props) => <Card {...props} extraData={{}} />}
+            {(props) => <NewCard {...props} extraData={{}} />}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
