@@ -9,7 +9,7 @@ const DeckList = (props) => {
   return (
     <View style={styles.container}>
       <Button
-        title='Add new Deck'
+        title='Create Deck'
         onPress={() => {
           //props.dispatch(addDeckAsync({ name: 'Combi', cards: [] }));
 
