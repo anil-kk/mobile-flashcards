@@ -12,7 +12,7 @@ const DeckListItem = ({ item, navigation }) => {
         deck: item
     })}>
       <View style={styles.deckListItem}>
-        <Text style={styles.itemFont}>{item.name}</Text>
+        <Text style={styles.itemTitle}>{item.name}</Text>
         <Text style={styles.itemFont}>{item.cards.length} Cards</Text>
       </View>
     </TouchableHighlight>
@@ -21,21 +21,36 @@ const DeckListItem = ({ item, navigation }) => {
 
 const styles = StyleSheet.create({
   deckListItem: {
-    flex: 1,
     fontSize: 20,
     height: 80,
     paddingHorizontal: 20,
-    width: '100%',
-    marginVertical: 10,
+    margin:10,
     justifyContent: 'center',
-    alignContent: 'center',
-    borderBottomColor: 'black',
-    borderBottomWidth: 2,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius:20,
+    backgroundColor: 'beige',
+    shadowOffset: {
+      width: 7,
+      height: 8
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation:4
   },
   itemFont: {
     textAlign: 'center',
     fontSize: 20,
   },
+  itemTitle: {
+    textAlign: 'center',
+    fontSize:30
+  }
 });
 
 export default DeckListItem;
+
+
+
+
+
