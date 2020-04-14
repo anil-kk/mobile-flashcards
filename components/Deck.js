@@ -5,17 +5,18 @@ import { connect } from 'react-redux';
 const Deck = (props) => {
   const { route, navigation, decks } = props;
   const { deck } = route.params;
+  const deckfromStore = decks.filter( d => d.id === deck.id)[0]
 
   return (
     <View styel={styles.container}>
       <View style={styles.details}>
-        <Text style={styles.title}> {deck.name}</Text>
-        <Text style={styles.text}> {deck.cards.length} Cards</Text>
+        <Text style={styles.title}> {deckfromStore.name}</Text>
+        <Text style={styles.text}> {deckfromStore.cards.length} Cards</Text>
       </View>
 
       <Button
         title='Add Card'
-        onPress={() => navigation.navigate('NewCard', { deck })}
+        onPress={() => navigation.navigate('NewCard', { deckId: deck.id })}
       ></Button>
       <Button
         title='Start Quiz'
