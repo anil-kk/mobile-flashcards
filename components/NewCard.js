@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Switch, Button, Text } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Switch,
+  Button,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import { addCardAsync } from '../actions';
@@ -14,10 +23,10 @@ const NewCard = (props) => {
 
   const questionChangeHandler = (text) => setQuestion(text);
   const answerChangeHandler = (text) => setAnswer(text);
-  const answerValidationChangeHandler = (value) => setIsCorrectAnswer(value)
+  const answerValidationChangeHandler = (value) => setIsCorrectAnswer(value);
 
   const buttonPressHandler = () => {
-    const card = { question, answer, isCorrectAnswer, deckId};
+    const card = { question, answer, isCorrectAnswer, deckId };
 
     if (question === '' || answer === '') {
       return;
@@ -27,7 +36,10 @@ const NewCard = (props) => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.Os == 'ios' ? 'padding' : 'height'}
+    >
       <TextInput
         placeholder='Enter Question'
         value={question}
@@ -42,21 +54,24 @@ const NewCard = (props) => {
       />
 
       <View style={styles.switchContainer}>
-   
-
-      <Switch
-        value={isCorrectAnswer}
-        onValueChange={answerValidationChangeHandler}
-        title='Is Correct answer'
-
-        style={styles.switch}
-      ></Switch>
-           <Text style={styles.switchLabel}> Turn this on if above answer is correct.</Text>
-
+        <Switch
+          value={isCorrectAnswer}
+          onValueChange={answerValidationChangeHandler}
+          title='Is Correct answer'
+          style={styles.switch}
+        ></Switch>
+        <Text style={styles.switchLabel}>
+          {' '}
+          Turn this on if above answer is correct.
+        </Text>
       </View>
 
-      <Button onPress={buttonPressHandler} title='Add' style={{height:100, }}></Button>
-    </View>
+      <Button
+        onPress={buttonPressHandler}
+        title='Add'
+        style={{ height: 100 }}
+      ></Button>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -74,18 +89,17 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     paddingLeft: 10,
-    marginVertical:10
+    marginVertical: 10,
   },
-  switchContainer:{
+  switchContainer: {
     flexDirection: 'row',
-    marginVertical:10,
-    justifyContent:'center'
+    marginVertical: 10,
+    justifyContent: 'center',
   },
-  switch:{
-    alignSelf:'center'
+  switch: {
+    alignSelf: 'center',
   },
-  switchLabel:{
-    alignSelf:'center'
-
-  }
+  switchLabel: {
+    alignSelf: 'center',
+  },
 });

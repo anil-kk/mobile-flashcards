@@ -24,6 +24,10 @@ const Quiz = (props) => {
     return currentCardIndex < totalCards;
   };
 
+  const isDeckEmpty = () => {
+    return totalCards === 0
+  }
+
   const nextIndex = () => {
     if (!hasNext()) {
       return;
@@ -32,7 +36,6 @@ const Quiz = (props) => {
   };
 
   const handleCorrectAnswer = (card) => {
-    console.log(card);
     const { isCorrectAnswer } = card;
     if (isCorrectAnswer === true) {
       setScore(score + 1);
@@ -41,13 +44,19 @@ const Quiz = (props) => {
   };
 
   const handleInCorrectAnswer = (card) => {
-    console.log(card);
     const { isCorrectAnswer } = card;
     if (isCorrectAnswer === false) {
       setScore(score + 1);
     }
     nextIndex();
   };
+
+
+  if(isDeckEmpty()){
+    return (
+      <View style={styles.info}><Text>Deck is empty!</Text></View>
+    )
+  }
 
   return (
     <View>

@@ -16,7 +16,7 @@ const NewDeck = (props) => {
       return;
     }
     dispatch(addDeckAsync(deck));
-    navigation.navigate('DeckList');
+    navigation.navigate('Deck', { deck });
   };
   return (
     <View style={styles.container}>
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 20,
-    marginTop:50
+    marginTop: 50,
   },
-  textInput:{
+  textInput: {
     height: 50,
     width: '70%',
     borderColor: 'black',
     borderWidth: 1,
-    paddingLeft:5
-  }
+    paddingLeft: 5,
+  },
 });

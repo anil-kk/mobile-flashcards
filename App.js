@@ -3,7 +3,7 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, Button } from 'react-native';
 
 import { Provider } from 'react-redux';
 
@@ -16,7 +16,9 @@ import NewDeck from './components/NewDeck';
 import appReduxStore from './store';
 
 import API from './storage';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
+import { FontAwesome } from '@expo/vector-icons';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -38,7 +40,20 @@ export default function App() {
             {(props) => <NewDeck {...props} extraData={{}} />}
           </Stack.Screen>
 
-          <Stack.Screen name='Deck'>
+          <Stack.Screen
+            name='Deck'
+            options={({ navigation, route }) => ({
+              headerTitle: 'Deck',
+              headerLeft: () => (
+                <FontAwesome.Button
+                  name='arrow-left'
+                  backgroundColor='#fff'
+                  color='#000'
+                  onPress={() => navigation.navigate('DeckList')}
+                ></FontAwesome.Button>
+              ),
+            })}
+          >
             {(props) => <Deck {...props} extraData={{}} />}
           </Stack.Screen>
 
