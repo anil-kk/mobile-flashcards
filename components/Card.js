@@ -25,10 +25,12 @@ const Card = (props) => {
         )}
       </View>
 
-      <Button
-        title={isQuestionVisible ? 'Answer' : 'Question'}
-        onPress={toggleQuestionVisibility}
-      />
+      <View style={{margin:10, width:100, alignSelf:'center'}}>
+        <Button
+          title={isQuestionVisible ? 'Answer' : 'Question'}
+          onPress={toggleQuestionVisibility}
+        />
+      </View>
 
       <View style={styles.buttonGroup}>
         <Button
@@ -80,12 +82,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     padding: 10,
     borderRadius: 20,
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   buttonGroup: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginVertical: 20,
+    justifyContent: 'space-between',
+    margin: 20,
   },
   correct: {
     backgroundColor: 'green',
