@@ -9,10 +9,12 @@ This application functionality is tested in Android and IOS
 Use the package manager [npm](https://www.npmjs.com/get-npm) to run this React Native App.
 
 ```bash
+npm install
 npm start
 ```
 
 or 
+yarn install
 
 ```bash
 yarn start
