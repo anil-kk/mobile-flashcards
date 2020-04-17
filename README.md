@@ -14,9 +14,9 @@ npm start
 ```
 
 or 
-yarn install
 
 ```bash
+yarn install
 yarn start
 ```
 
