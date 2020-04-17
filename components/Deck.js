@@ -25,11 +25,11 @@ const Deck = (props) => {
       <View style={styles.buttonGroup}>
         <Button
           title='Add Card'
-          onPress={() => navigation.navigate('NewCard', { deckId: deck.id })}
+          onPress={() => navigation.navigate('NewCard', { deck: deckfromStore })}
         ></Button>
         <Button
           title='Start Quiz'
-          onPress={() => navigation.navigate('Quiz', { deck })}
+          onPress={() => navigation.navigate('Quiz', { deck: deckfromStore })}
         ></Button>
       </View>
     </View>

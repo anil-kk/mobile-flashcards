@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler'; /* react-native-gesture-handler import should be on top accoring to docs */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, Button } from 'react-native';
-
 import { Provider } from 'react-redux';
+import { FontAwesome } from '@expo/vector-icons';
 
 import StatusBar from './components/StatusBar';
 import DeckList from './components/DeckList';
@@ -13,16 +13,20 @@ import Deck from './components/Deck';
 import Quiz from './components/Quiz';
 import NewCard from './components/NewCard';
 import NewDeck from './components/NewDeck';
+
 import appReduxStore from './store';
-
 import API from './storage';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 
-import { FontAwesome } from '@expo/vector-icons';
+import { setLocalNotification } from './services';
+
 const Stack = createStackNavigator();
 
 export default function App() {
   API.setInitialData();
+
+  useEffect(() => {
+    setLocalNotification();
+  });
 
   return (
     <Provider store={appReduxStore}>

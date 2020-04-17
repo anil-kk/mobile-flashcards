@@ -19,20 +19,20 @@ const NewCard = (props) => {
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
 
   const { route, navigation, dispatch } = props;
-  const { deckId } = route.params;
+  const { deck } = route.params;
 
   const questionChangeHandler = (text) => setQuestion(text);
   const answerChangeHandler = (text) => setAnswer(text);
   const answerValidationChangeHandler = (value) => setIsCorrectAnswer(value);
 
   const buttonPressHandler = () => {
-    const card = { question, answer, isCorrectAnswer, deckId };
+    const card = { question, answer, isCorrectAnswer, deckId: deck.id };
 
     if (question === '' || answer === '') {
       return;
     }
     dispatch(addCardAsync(card));
-    navigation.goBack();
+    navigation.navigate('Deck', { deck });
   };
 
   return (
@@ -61,7 +61,6 @@ const NewCard = (props) => {
           style={styles.switch}
         ></Switch>
         <Text style={styles.switchLabel}>
-          {' '}
           Turn this on if above answer is correct.
         </Text>
       </View>

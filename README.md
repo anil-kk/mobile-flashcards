@@ -1,6 +1,8 @@
 # mobile-flashcards
 A cross-platform mobile application for Android and IOS in React Native, a project work for the Udacity Nano Degree
 
+This application functionality is tested in Android and IOS
+
 
 ## Run
 
@@ -9,6 +11,14 @@ Use the package manager [npm](https://www.npmjs.com/get-npm) to run this React N
 ```bash
 npm start
 ```
+
+or 
+
+```bash
+yarn start
+```
+
+
 
 ## Environment Setup
 

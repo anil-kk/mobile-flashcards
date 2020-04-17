@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
 
 import Card from './Card';
+import Score from './Score';
 
 const Quiz = (props) => {
-  const [count, setCount] = useState(0);
   const [score, setScore] = useState(0);
   const [isQuestionVisible, setIsQuestionVisible] = useState(true);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
-  const { route, navigation, dispatch, cards } = props;
+  const { route, cards, decks } = props;
   const { deck } = route.params;
   const deckCards = deck.cards.map((cardId) => cards[cardId]);
   const totalCards = deckCards.length;
   const indicatorText = `${currentCardIndex + 1} of ${totalCards}`;
+
+  const reset = ()=>{
+    setCurrentCardIndex(0)
+  }
 
   const toggleQuestionVisibility = () => {
     setIsQuestionVisible(!isQuestionVisible);
@@ -25,8 +29,8 @@ const Quiz = (props) => {
   };
 
   const isDeckEmpty = () => {
-    return totalCards === 0
-  }
+    return totalCards === 0;
+  };
 
   const nextIndex = () => {
     if (!hasNext()) {
@@ -51,11 +55,12 @@ const Quiz = (props) => {
     nextIndex();
   };
 
-
-  if(isDeckEmpty()){
+  if (isDeckEmpty()) {
     return (
-      <View style={styles.info}><Text>Deck is empty!</Text></View>
-    )
+      <View style={styles.info}>
+        <Text>Deck is empty!</Text>
+      </View>
+    );
   }
 
   return (
@@ -74,30 +79,7 @@ const Quiz = (props) => {
           ></Card>
         </View>
       ) : (
-        <View style={styles.score}>
-          <Text style={{ fontSize: 15, alignSelf: 'center' }}>SCORE</Text>
-          <Text
-            style={{
-              fontSize: 40,
-              fontWeight: 'bold',
-              alignSelf: 'center',
-              color: 'red',
-            }}
-          >
-            {score}
-          </Text>
-
-          <View style={styles.buttonGroup}>
-            <Button
-              title='Back To Deck'
-              onPress={() => navigation.goBack()}
-            />
-            <Button
-              title='Restart Quiz'
-              onPress={() => navigation.push('Quiz', { deck })}
-            />
-          </View>
-        </View>
+        <Score reset={reset} score={score} deck={deck} {...props}/>
       )}
     </View>
   );
@@ -105,9 +87,8 @@ const Quiz = (props) => {
 
 const mapStateToProps = (state) => ({
   cards: state.cards,
+  decks: state.decks
 });
-
-const mapDispatchToProps = {};
 
 export default connect(mapStateToProps)(Quiz);
 
@@ -118,28 +99,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'center',
     marginVertical: 10,
-  },
-  score: {
-    fontSize: 20,
-    height: 200,
-    paddingHorizontal: 20,
-    margin: 20,
-    justifyContent: 'center',
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 20,
-    backgroundColor: 'beige',
-    shadowOffset: {
-      width: 7,
-      height: 8,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 4,
-  },
-  buttonGroup: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 20,
-  },
+  }
 });
